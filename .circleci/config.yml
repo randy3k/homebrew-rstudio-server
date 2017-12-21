@@ -32,7 +32,7 @@ jobs:
       - run: |
           mkdir /tmp/bottles
           cd /tmp/bottles
-          brew test-bot --skip-setup
+          brew test-bot --skip-setup -v
       - store_test_results:
           path: /tmp/bottles
       - store_artifacts:
