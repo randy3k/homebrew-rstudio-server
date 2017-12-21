@@ -18,7 +18,7 @@ class RstudioServer < Formula
   depends_on "r" => :recommended
   depends_on "cmake" => :build
   depends_on "ant" => :build
-  depends_on "boost@1.63" => :build
+  depends_on "boost-rstudio-server" => :build
   depends_on "openssl"
 
   if build.head?
@@ -169,14 +169,14 @@ class RstudioServer < Formula
       args << "-DRSTUDIO_USE_LIBCXX=Yes"
       args << "-DRSTUDIO_USE_SYSTEM_BOOST=Yes"
       args << "-DRSTUDIO_BOOST_VERSION='1.63.0'"
-      args << "-DBOOST_ROOT=#{Formula["boost@1.63"].opt_prefix}"
+      args << "-DBOOST_ROOT=#{Formula["boost-rstudio-server"].opt_prefix}"
       args << "-DBoost_NO_SYSTEM_PATHS=On"
-      args << "-DBOOST_INCLUDEDIR=#{Formula["boost@1.63"].opt_include}"
-      args << "-DBOOST_LIBRARYDIR=#{Formula["boost@1.63"].opt_lib}"
+      args << "-DBOOST_INCLUDEDIR=#{Formula["boost-rstudio-server"].opt_include}"
+      args << "-DBOOST_LIBRARYDIR=#{Formula["boost-rstudio-server"].opt_lib}"
       args << "-DCMAKE_INSTALL_PREFIX=#{prefix}/rstudio-server"
       args << "-DCMAKE_CXX_FLAGS=-I#{Formula["openssl"].opt_include} -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=0"
 
-      linkerflags = "-DCMAKE_EXE_LINKER_FLAGS=-L#{Formula["openssl"].opt_lib} -L#{Formula["boost@1.63"].opt_lib}"
+      linkerflags = "-DCMAKE_EXE_LINKER_FLAGS=-L#{Formula["openssl"].opt_lib} -L#{Formula["boost-rstudio-server"].opt_lib}"
       if OS.linux?
         linkerflags += " -L#{Formula["linux-pam"].opt_lib}" if build.with? "linux-pam"
       end

@@ -1,4 +1,4 @@
-class BoostAT163 < Formula
+class BoostRstudioServer < Formula
   desc "Collection of portable C++ source libraries"
   homepage "https://www.boost.org/"
   url "https://downloads.sourceforge.net/project/boost/boost/1.63.0/boost_1_63_0.tar.bz2"
@@ -6,7 +6,7 @@ class BoostAT163 < Formula
   head "https://github.com/boostorg/boost.git"
   revision 1
 
-  keg_only :versioned_formula
+  keg_only "used only by rstudio-server at build time"
 
   option "with-icu4c", "Build regexp engine with icu support"
   option "without-single", "Disable building single-threading variant"
