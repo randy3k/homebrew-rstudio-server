@@ -33,12 +33,11 @@ jobs:
           mkdir /tmp/bottles
           cd /tmp/bottles
           brew test-bot --skip-setup
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - bottles
       - store_test_results:
           path: /tmp/bottles
+      - store_artifacts:
+          path: /tmp/bottles
+          destination: bottles
 
 workflows:
   version: 2
