@@ -129,6 +129,7 @@ class RstudioServer < Formula
     end
 
     gwt_lib = buildpath/"src/gwt/lib/"
+
     if build.head?
       (gwt_lib/"gin/2.1.2").install resource("gin")
       (gwt_lib/"gwt/2.8.1").install resource("gwt")
@@ -136,9 +137,11 @@ class RstudioServer < Formula
       (gwt_lib/"gin/1.5").install resource("gin")
       (gwt_lib/"gwt/2.7.0").install resource("gwt")
     end
+
     gwt_lib.install resource("junit")
     (gwt_lib/"selenium/2.37.0").install resource("selenium")
     (gwt_lib/"selenium/2.37.0").install resource("selenium-server")
+
     if OS.linux?
       (gwt_lib/"selenium/chromedriver/2.7").install resource("chromedriver-linux")
     elsif OS.mac?
