@@ -42,7 +42,6 @@ class BoostRstudioServer < Formula
     # layout should be synchronized with boost-python and boost-mpi
     args = ["--prefix=#{prefix}",
             "--libdir=#{lib}",
-            "-d2",
             "-j#{ENV.make_jobs}",
             "--layout=tagged",
             "--user-config=user-config.jam",
