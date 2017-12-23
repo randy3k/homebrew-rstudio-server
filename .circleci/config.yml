@@ -34,6 +34,7 @@ jobs:
     macos:
       xcode: "9.0"
     steps:
+      - run: brew update
       - checkout
       - run:
           no_output_timeout: 60m
@@ -43,7 +44,6 @@ jobs:
             cp -a ./ $TAP_PATH/
             brew tap --repair
             FORMULA=$(echo "$CIRCLE_TAG" | sed -nE 's/(^[a-z\-]*)-[0-9\.]*$/\1/p')
-            echo "brew install $FORMULA"
             brew install --build-from-source --build-bottle $FORMULA
             mkdir -p /tmp/bottles
             cd /tmp/bottles
@@ -52,7 +52,7 @@ jobs:
             brew install tcnksm/ghr/ghr
             mkdir -p /tmp/dist
             for f in /tmp/bottles/$FORMULA*; do cp "$f" /tmp/dist/; done
-            ghr --username randy3k --token $GITHUB_TOKEN --replace "$CIRCLE_TAG" /tmp/dist
+            ghr --username $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --token $GITHUB_TOKEN --replace "$CIRCLE_TAG" /tmp/dist
 
 workflows:
   version: 2
