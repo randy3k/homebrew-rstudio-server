@@ -22,8 +22,6 @@ class RstudioServer < Formula
     depends_on "linuxbrew/extra/linux-pam"
   end
 
-  patch :DATA
-
   depends_on :java => "1.8"
   depends_on "r" => :recommended
   depends_on "cmake" => :build
