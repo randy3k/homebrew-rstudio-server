@@ -22,6 +22,8 @@ class RstudioServer < Formula
     depends_on "linuxbrew/extra/linux-pam"
   end
 
+  patch :DATA
+
   depends_on :java => "1.8"
   depends_on "r" => :recommended
   depends_on "cmake" => :build
@@ -273,3 +275,24 @@ class RstudioServer < Formula
     system "#{bin}/rstudio-server", "version"
   end
 end
+
+__END__
+diff --git a/src/gwt/build.xml b/src/gwt/build.xml
+index 9834c42464..3a98d5e274 100644
+--- a/src/gwt/build.xml
++++ b/src/gwt/build.xml
+@@ -108 +108 @@
+-         <jvmarg value="-Xmx1536M"/>
++         <jvmarg value="-Xmx1024M"/>
+@@ -112 +112 @@
+-         <arg value="2"/>
++         <arg value="1"/>
+@@ -148 +148 @@
+-         <jvmarg value="-Xmx2048M"/>
++         <jvmarg value="-Xmx1024M"/>
+@@ -165 +165 @@
+-         <jvmarg value="-Xmx2048M"/>
++         <jvmarg value="-Xmx1024M"/>
+@@ -186 +186 @@
+-         <jvmarg value="-Xmx2048M"/>
++         <jvmarg value="-Xmx1024M"/>
