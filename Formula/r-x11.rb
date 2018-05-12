@@ -1,8 +1,8 @@
 class RX11 < Formula
   desc "R Program with X11 support"
   homepage "https://www.r-project.org/"
-  url "https://cran.rstudio.com/src/base/R-3/R-3.4.4.tar.gz"
-  sha256 "b3e97d2fab7256d1c655c4075934725ba1cd7cb9237240a11bb22ccdad960337"
+  url "https://cran.rstudio.com/src/base/R-3/R-3.5.0.tar.gz"
+  sha256 "fd1725535e21797d3d9fea8963d99be0ba4c3aecadcf081b43e261458b416870"
   revision 1
 
   bottle do
